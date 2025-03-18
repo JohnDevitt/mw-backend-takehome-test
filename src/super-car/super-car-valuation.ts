@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import { VehicleValuation } from '../models/vehicle-valuation';
 import { SuperCarValuationResponse } from './types/super-car-valuation-response';
+import { VehicleProvider } from '@app/enum/enum';
 
 export async function fetchValuationFromSuperCarValuation(
   vrm: string,
@@ -18,6 +19,7 @@ export async function fetchValuationFromSuperCarValuation(
   valuation.vrm = vrm;
   valuation.lowestValue = response.data.valuation.lowerValue;
   valuation.highestValue = response.data.valuation.upperValue;
+  valuation.provider = VehicleProvider.SuperCar;
 
   return valuation;
 }
